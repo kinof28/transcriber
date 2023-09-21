@@ -16,7 +16,7 @@ const Footer = () => {
       </h3>
       <div className="flex gap-6 text-2xl text-indigo-900 px-10">
         <a
-          href="https://www.linkedin.com/in/abdelwahab-hamadouche-415161231/"
+          href="https://www.linkedin.com/in/abdelwahab-hamadouche"
           target="_blank"
         >
           <BsLinkedin />
@@ -30,7 +30,7 @@ const Footer = () => {
         <a href="https://github.com/kinof28" target="_blank">
           <BsGithub />
         </a>
-        <a href="https://github.com/kinof28" target="_blank">
+        <a href="https://www.youtube.com/@CodewithWahab" target="_blank">
           <BsYoutube />
         </a>
       </div>

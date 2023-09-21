@@ -2,6 +2,8 @@ import Image from "next/image";
 import autoCaption from "./_assets/auto-captions.webp";
 import textToSpeech from "./_assets/Text_to_speech.webp";
 import Link from "next/link";
+import Card from "./_components/UI/Card";
+import Button from "./_components/UI/Button";
 
 export default function Home() {
   return (
@@ -28,47 +30,37 @@ export default function Home() {
               required.
             </p>
             <Link href="/">
-              <button className="bg-white rounded-full text-violet-600 py-2 px-6 font-bold text-lg hover:scale-110 hover:opacity-90 transition ">
-                Try for free
-              </button>
+              <Button
+                className="bg-white text-violet-600"
+                value="Try for free"
+              />
             </Link>
           </div>
         </div>
       </section>
       <section className="flex flex-col justify-center items-center p-20">
-        <h1 className="text-4xl font-extrabold mb-10">
+        <h1 className="text-4xl font-extrabold text-indigo-900 mb-10">
           Smart tools that help you Transcribe
         </h1>
-        <div className="flex gap-16 justify-center items-center px-10 my-10">
-          <div className="flex-1 pr-5">
-            <h2 className="font-bold text-2xl text-violet-800 mb-5">
-              AUTO-CAPTIONS
-            </h2>
-            <p className="text-xl text-indigo-900 tracking-wide leading-7">
-              Automatically create accurate captions in over 140 languages. Our
-              speech-to-text technology securely transcribes your video's audio,
-              converting it into readable captions in just minutes.
-            </p>
-          </div>
-          <Image src={autoCaption} alt="Auto Caption" className="flex-1 w-px" />
-        </div>
-        <div className="flex flex-row-reverse gap-16 justify-center items-center px-10 my-10">
-          <div className="flex-1 pr-5">
-            <h2 className="font-bold text-2xl text-violet-800 mb-5">
-              TEXT TO SPEECH
-            </h2>
-            <p className="text-xl text-indigo-900 tracking-wide leading-7">
-              Turn text into speech with one click. Choose a language, change
-              the voice, pitch, style and pace to accurately replicate a wide
-              range of natural-sounding voices.
-            </p>
-          </div>
-          <Image
-            src={textToSpeech}
-            alt="Text to Speech"
-            className="flex-1 w-px"
-          />
-        </div>
+        <Card title="AUTO-CAPTIONS" image={autoCaption} alt="AUTO-CAPTIONS">
+          <p>
+            Automatically create accurate captions in over 140 languages. Our
+            speech-to-text technology securely transcribes your video's audio,
+            converting it into readable captions in just minutes.
+          </p>
+        </Card>
+        <Card
+          title="TEXT TO SPEECH"
+          image={textToSpeech}
+          alt="Text to Speech"
+          reversed={true}
+        >
+          <p>
+            Turn text into speech with one click. Choose a language, change the
+            voice, pitch, style and pace to accurately replicate a wide range of
+            natural-sounding voices.
+          </p>
+        </Card>
       </section>
       <section>{/* pricing */}</section>
       <section>{/* what is this web site about */}</section>
