@@ -4,9 +4,6 @@ const Button = ({
 }: {
   value: string;
   className?: string;
-  //   onClick: any;
-  color?: string;
-  bgColor?: string;
 }) => {
   return (
     <button
