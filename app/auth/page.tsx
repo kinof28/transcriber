@@ -56,14 +56,17 @@ const Auth = () => {
           <Button
             value="Continue using Google"
             className="bg-white text-indigo-700 border-2 border-indigo-300 hover:shadow-md hover:shadow-indigo-300"
+            disabled={true}
           />
           <Button
             value="Continue using Github"
             className="bg-white text-indigo-700 border-2 border-indigo-300 hover:shadow-md hover:shadow-indigo-300"
+            disabled={true}
           />
           <Button
             value="Continue using Facebook"
             className="bg-white text-indigo-700 border-2 border-indigo-300 hover:shadow-md hover:shadow-indigo-300"
+            disabled={true}
           />
         </div>
       </div>

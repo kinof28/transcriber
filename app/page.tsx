@@ -29,7 +29,7 @@ export default function Home() {
               Everything you need to create show-stopping videos, no expertise
               required.
             </p>
-            <Link href="/">
+            <Link href="/auth">
               <Button
                 className="bg-white text-violet-600"
                 value="Try for free"
