@@ -39,6 +39,14 @@ const reducer = (state: stateType, action: { type: string; payload: any }) => {
 
 const ContactForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const onSubmit = async () => {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(state),
+    });
+    const val = await response.json();
+    console.log(val);
+  };
   return (
     <div className="flex flex-col gap-2 pb-4 ">
       <Input
@@ -79,6 +87,7 @@ const ContactForm = () => {
       <Button
         value="Send"
         className="bg-white text-indigo-700 border-2 border-indigo-300 hover:shadow-md hover:shadow-indigo-300"
+        onClick={onSubmit}
       />
     </div>
   );
