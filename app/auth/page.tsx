@@ -17,7 +17,7 @@ const Auth = () => {
     console.log("Subscribe");
   };
   return (
-    <div className="bg-gradient-to-r from-[#9f56db] to-[#5a4cdb] p-16 text-white flex flex-col gap-8 h-screen items-center justify-center">
+    <div className="bg-gradient-to-r from-[#9f56db] to-[#5a4cdb] p-16 text-white flex flex-col gap-8 min-h-screen items-center justify-center">
       <h1 className="text-4xl font-bold text-center">
         {login
           ? "Welcome Again, please enter your email and password"
