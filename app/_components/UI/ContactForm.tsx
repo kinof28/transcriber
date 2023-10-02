@@ -1,5 +1,5 @@
 "use client";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 
 import Input from "./Input";
 import Button from "./Button";
@@ -43,14 +43,39 @@ const reducer = (
 const ContactForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [errors, dispatchErrors] = useReducer(reducer, initialState);
+  const [resultState, setResultState] = useState({
+    message: "",
+    successful: false,
+  });
+  const [pending, setPending] = useState(false);
   const onSubmit = async () => {
     if (validate("")) {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(state),
-      });
-      const val = await response.json();
-      console.log(val);
+      setPending(true);
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          body: JSON.stringify(state),
+        });
+        const val = await response.json();
+        const status = await response.status;
+        if (status === 200) {
+          setResultState({
+            message: "Your message was sent successfully",
+            successful: true,
+          });
+        } else {
+          setResultState({
+            message:
+              "The Message was not sent successfully, Please try later ...",
+            successful: false,
+          });
+        }
+        console.log(val);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setPending(false);
+      }
     } else {
       console.log("invalid form inputs");
     }
@@ -75,7 +100,14 @@ const ContactForm = () => {
     return parseResult.success;
   };
   return (
-    <div className="flex flex-col gap-2 pb-4 ">
+    <div className="flex flex-col gap-2 pb-4 text-center">
+      <h2
+        className={`text-lg w-80 self-center font-serif font-semibold ${
+          resultState.successful ? "text-lime-300" : "text-red-300"
+        }`}
+      >
+        {resultState.message}
+      </h2>
       <Input
         type="email"
         value={state.email}
@@ -130,7 +162,7 @@ const ContactForm = () => {
       />
 
       <Button
-        value="Send"
+        value={pending ? "Sending ...." : "Send"}
         className="bg-white text-indigo-700 border-2 border-indigo-300 hover:shadow-md hover:shadow-indigo-300"
         onClick={onSubmit}
       />
