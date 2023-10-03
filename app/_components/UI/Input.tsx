@@ -32,8 +32,8 @@ const Input = ({
           cols={30}
           rows={10}
           onChange={(e) => onchange(e.target.value)}
-          onBlur={() => onblur()}
-          onFocus={() => onfocus()}
+          onBlur={onblur}
+          onFocus={onfocus}
         />
       ) : (
         <input
@@ -41,8 +41,8 @@ const Input = ({
           value={value}
           placeholder={placeholder}
           onChange={(e) => onchange(e.target.value)}
-          onBlur={() => onblur()}
-          onFocus={() => onfocus()}
+          onBlur={onblur}
+          onFocus={onfocus}
           className={className}
         />
       )}
