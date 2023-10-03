@@ -63,6 +63,7 @@ const ContactForm = () => {
             message: "Your message was sent successfully",
             successful: true,
           });
+          dispatch({ type: actions.reset });
         } else {
           setResultState({
             message:
