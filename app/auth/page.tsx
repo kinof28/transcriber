@@ -23,6 +23,7 @@ const Auth = () => {
     }
   };
   const onSubscribe = async () => {
+    if (pending) return;
     if (validate("")) {
       setPending(true);
       try {
@@ -33,7 +34,7 @@ const Auth = () => {
         const val = await response.json();
         console.log(val);
         if (response.status === 200) {
-          router.replace("/");
+          // router.replace("/");
         } else {
           setMessage(val.message);
         }
@@ -91,7 +92,7 @@ const Auth = () => {
             onblur={() => validate("password")}
             onfocus={() => setPasswordError("")}
           />
-          <p className="text-center text-red-300 text-md font-serif font-semibold max-w-xs px-2 ">
+          <p className="text-center text-red-300 text-md font-serif font-semibold md:max-w-xs px-2 ">
             {message}
           </p>
           <Button
