@@ -165,7 +165,11 @@ const ContactForm = () => {
 
       <Button
         value={pending ? "Sending ...." : "Send"}
-        className="bg-white text-indigo-700 border-2 border-indigo-300 hover:shadow-md hover:shadow-indigo-300"
+        className={`bg-white text-indigo-700 border-2 border-indigo-300  ${
+          errors.email !== "" || errors.name !== "" || errors.message !== ""
+            ? "shadow-md shadow-pink-300 border-pink-400 hover:shadow-md hover:shadow-pink-300"
+            : "hover:shadow-md hover:shadow-indigo-300"
+        }`}
         onClick={onSubmit}
       />
     </div>
