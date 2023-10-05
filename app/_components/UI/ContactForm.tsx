@@ -49,6 +49,7 @@ const ContactForm = () => {
   });
   const [pending, setPending] = useState(false);
   const onSubmit = async () => {
+    if (pending) return;
     if (validate("")) {
       setPending(true);
       try {
