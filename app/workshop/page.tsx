@@ -1,7 +1,13 @@
-import React from "react";
+import TextToSpeech from "../_components/TextToSpeech";
+import Transcribe from "../_components/Transcribe";
 
 const WorkshopPage = () => {
-  return <div>WorkshopPage</div>;
+  return (
+    <>
+      <Transcribe />
+      <TextToSpeech />
+    </>
+  );
 };
 
 export default WorkshopPage;
