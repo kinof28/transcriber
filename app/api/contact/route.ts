@@ -1,3 +1,4 @@
+import transporter from "@/lib/email_transporter";
 import { ContactForm, ContactSchema } from "@/models/contact.model";
 import { NextRequest, NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -5,12 +6,29 @@ import { ZodError } from "zod";
 export const POST = async (req: NextRequest) => {
   const json = await req.json();
   console.log("received: ", json);
+
   try {
     const contactValues: ContactForm = ContactSchema.parse(json);
-    return NextResponse.json({
-      Message: `every thing is fine`,
-      status: 200,
-    });
+    try {
+      const info = await transporter.sendMail({
+        from: contactValues.email,
+        to: "ab28fx@gmail.com,hamadouche.abdelwahab@gmail.com",
+        subject: `message from transcriber: ${contactValues.subject}`,
+        // text: contactValues.message,
+        html: `<h1>${contactValues.subject}</h1> <b> from: ${contactValues.email}</b> <br/> <p> ${contactValues.message} </p> `,
+      });
+      console.log("message sent: ", info.messageId);
+      return NextResponse.json({
+        Message: `every thing is fine`,
+        status: 200,
+      });
+    } catch (error) {
+      console.log(error);
+      return NextResponse.json({
+        Message: `some error happened here`,
+        status: 500,
+      });
+    }
   } catch (error) {
     return NextResponse.json(
       {
