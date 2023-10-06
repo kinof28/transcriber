@@ -1,8 +1,8 @@
 "use client";
 import { useReducer, useState } from "react";
 
-import Input from "./Input";
-import Button from "./Button";
+import Input from "./UI/Input";
+import Button from "./UI/Button";
 import type { ContactForm } from "@/models/contact.model";
 import { ContactSchema } from "@/models/contact.model";
 import { ZodError } from "zod";

@@ -1,4 +1,4 @@
-import ContactForm from "../_components/UI/ContactForm";
+import ContactForm from "../_components/ContactForm";
 const ContactPage = () => {
   return (
     <div className="bg-gradient-to-r from-[#9f56db] to-[#5a4cdb] text-white flex flex-col items-center justify-start min-h-screen">
