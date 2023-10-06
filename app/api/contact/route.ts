@@ -14,20 +14,25 @@ export const POST = async (req: NextRequest) => {
         from: contactValues.email,
         to: "ab28fx@gmail.com,hamadouche.abdelwahab@gmail.com",
         subject: `message from transcriber: ${contactValues.subject}`,
-        // text: contactValues.message,
         html: `<h1>${contactValues.subject}</h1> <b> from: ${contactValues.email}</b> <br/> <p> ${contactValues.message} </p> `,
       });
       console.log("message sent: ", info.messageId);
-      return NextResponse.json({
-        Message: `every thing is fine`,
-        status: 200,
-      });
+      return NextResponse.json(
+        {
+          Message: `message sent successfully`,
+        },
+        {
+          status: 200,
+        }
+      );
     } catch (error) {
       console.log(error);
-      return NextResponse.json({
-        Message: `some error happened here`,
-        status: 500,
-      });
+      return NextResponse.json(
+        {
+          Message: `some error happened in sending the email, please check the server configuration`,
+        },
+        { status: 500 }
+      );
     }
   } catch (error) {
     return NextResponse.json(
